@@ -11,23 +11,21 @@ openai_key = "sk-proj-EH5zKkQqNqLPmrksxJbGT3BlbkFJCiWotwUvgGgkhYvrEqas"
 llm = OpenAI(api_key=openai_key, model_name="gpt-3.5-turbo")
 
 def main():
-   st.title("Dessert Recipe Summarizer")
+    st.title("Dessert Recipe Summarizer")
 
     # Input for ingredients
-   ingredients = st.text_area("Enter the ingredients separated by commas (e.g., flour, sugar, eggs):")
+    ingredients = st.text_area("Enter the ingredients separated by commas (e.g., flour, sugar, eggs):")
    
-  
-   if st.button("Generate Recipe"):
+    if st.button("Generate Recipe"):
         if ingredients:
-            #ingredients_list = [ingredient.strip() for ingredient in ingredients.split(",")]
             parser = CommaSeparatedListOutputParser()
             chain = create_retrieval_chain(llm, parser)
+            recipe_summary = chain.invoke({
+                "input": ingredients
+            })
 
             # Display the generated recipe summary in bullet points
             st.write("Recipe Summary:")
-            chain.invoke({
-            "input": ingredients
-            })
             st.markdown(f"- {recipe_summary}")
 
         else:
