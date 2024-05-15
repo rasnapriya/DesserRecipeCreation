@@ -3,6 +3,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_retrieval_chain
 from langchain import OpenAI
 from langchain_core.output_parsers import CommaSeparatedListOutputParser
+# USeful to create the Retrieval part
+from langchain.chains import create_retrieval_chain
 
 # Set up OpenAI
 openai_key = "sk-proj-EH5zKkQqNqLPmrksxJbGT3BlbkFJCiWotwUvgGgkhYvrEqas"
