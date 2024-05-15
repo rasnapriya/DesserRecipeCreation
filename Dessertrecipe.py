@@ -10,12 +10,6 @@ from langchain.chains import create_retrieval_chain
 openai_key = "sk-proj-EH5zKkQqNqLPmrksxJbGT3BlbkFJCiWotwUvgGgkhYvrEqas"
 llm = OpenAI(api_key=openai_key, model_name="gpt-3.5-turbo")
 
-def generate_recipe_summary(ingredients):
-    # For this example, let's just get the ingredients and concatenate the ingredients into a simple summary
-    
-    recipe_summary = " ".join(ingredients)
-    return recipe_summary
-
 def main():
    st.title("Dessert Recipe Summarizer")
 
