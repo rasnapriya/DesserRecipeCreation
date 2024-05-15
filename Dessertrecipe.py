@@ -21,8 +21,7 @@ def main():
         if ingredients:
             #ingredients_list = [ingredient.strip() for ingredient in ingredients.split(",")]
             parser = CommaSeparatedListOutputParser()
-            chain = ingredients | llm | parser
-            #recipe_summary = generate_recipe_summary(ingredients_list)
+            chain = create_retrieval_chain(llm, parser)
 
             # Display the generated recipe summary in bullet points
             st.write("Recipe Summary:")
