@@ -10,9 +10,9 @@ def generate_response(input_text):
   st.info(llm(input_text))
 
 with st.form('my_form'):
-  text = st.text_area('Enter text:', 'What are the three key pieces of advice for learning how to code?')
+  text = st.text_area('Enter Ingredients in a comma separated list:', 'Generate a simple dessert recipe with ingredients with flour, butter, sugar')
   submitted = st.form_submit_button('Submit')
   if not openai_api_key.startswith('sk-'):
     st.warning('Please enter your OpenAI API key!', icon='⚠')
   if submitted and openai_api_key.startswith('sk-'):
-    generate_response(text)
+    generate_response('Generate a simple dessert recipe with ingredients '+text)
