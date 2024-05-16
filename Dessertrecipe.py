@@ -1,35 +1,18 @@
 import streamlit as st
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains import create_retrieval_chain
-from langchain import OpenAI
-from langchain_core.output_parsers import CommaSeparatedListOutputParser
-# USeful to create the Retrieval part
-from langchain.chains import create_retrieval_chain
+from langchain.llms import OpenAI
 
-# Set up OpenAI
-openai_key = "sk-proj-EH5zKkQqNqLPmrksxJbGT3BlbkFJCiWotwUvgGgkhYvrEqas"
-llm = OpenAI(api_key=openai_key, model_name="gpt-3.5-turbo")
+st.title('🦜🔗 Test App')
 
-def main():
-    st.title("Dessert Recipe Summarizer")
+openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
-    # Input for ingredients
-    ingredients = st.text_area("Enter the ingredients separated by commas (e.g., flour, sugar, eggs):")
-   
-    if st.button("Generate Recipe"):
-        if ingredients:
-            parser = CommaSeparatedListOutputParser()
-            chain = create_retrieval_chain(llm, parser)
-            recipe_summary = chain.invoke({
-                "input": ingredients
-            })
+def generate_response(input_text):
+  llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+  st.info(llm(input_text))
 
-            # Display the generated recipe summary in bullet points
-            st.write("Recipe Summary:")
-            st.markdown(f"- {recipe_summary}")
-
-        else:
-            st.warning("Please enter the ingredients.")
-
-if __name__ == "__main__":
-    main()
+with st.form('my_form'):
+  text = st.text_area('Enter text:', 'What are the three key pieces of advice for learning how to code?')
+  submitted = st.form_submit_button('Submit')
+  if not openai_api_key.startswith('sk-'):
+    st.warning('Please enter your OpenAI API key!', icon='⚠')
+  if submitted and openai_api_key.startswith('sk-'):
+    generate_response(text)
