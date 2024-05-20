@@ -5,7 +5,7 @@ import openai
 
 st.title('🍩🍧🎂 Dessert Recipe Generator')
 
-openai_api_key = st.sidebar.text_input('API Key',type='password')
+api_key = st.sidebar.text_input('API Key',type='password')
 
 client = openai.OpenAI(
     api_key= api_key,
