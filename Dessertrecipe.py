@@ -29,7 +29,7 @@ with st.form('my_form'):
    
     if submitted:
         try:
-            generate_response(system_instructions,user_query )
+            generate_response(user_query)
         except Exception as e:
             print('Failed to upload to ftp: %s', repr(e))
 
