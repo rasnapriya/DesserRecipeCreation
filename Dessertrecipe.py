@@ -25,7 +25,6 @@ def generate_response(user_input):
     chat_completion.choices[0].message.content
 
 with st.form('my_form'):
-    system_intructions= 
     user_query= st.text_area('Enter Ingredients in a comma separated list (Example: butter, sugar, flour):')
     submitted = st.form_submit_button('Generate Recipe')
    
