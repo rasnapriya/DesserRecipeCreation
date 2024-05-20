@@ -3,7 +3,7 @@ import openai
 #from langchain_community.llms import OpenAI
 #from langchain.llms import OpenAI
 
-st.title('🍩🍧🎂 Razzpry's Dessert Recipe Generator')
+st.title('🍩🍧🎂 Razzprys Dessert Recipe Generator')
 
 api_key = st.sidebar.text_input('API Key',type='password')
 
