@@ -16,7 +16,7 @@ def generate_response(user_input):
     chat_completion = client.chat.completions.create(
         model="mistralai/Mistral-7B-Instruct-v0.2",
         messages=[
-            { "role": "system", "content": "You are Chef"},
+            {"role": "system", "content": "You are Chef"},
             {"role": "user","content": user_input},
         ],
         temperature=0.7,
